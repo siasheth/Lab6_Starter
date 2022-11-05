@@ -25,9 +25,11 @@ function getRecipesFromStorage() {
   //           header. It is possible in only a single line, but should
   //           be no more than a few lines.
   let storage = JSON.parse(localStorage.getItem('recipes'));
+
   if (storage == null) {
     return [];
   } 
+
   else {
     return storage;
   }
@@ -43,6 +45,7 @@ function getRecipesFromStorage() {
 function addRecipesToDocument(recipes) {
   // A10. TODO - Get a reference to the <main> element
   let main = document.querySelector('main');
+
   // A11. TODO - Loop through each of the recipes in the passed in array,
   //            create a <recipe-card> element for each one, and populate
   //            each <recipe-card> with that recipe data using element.data = ...
@@ -74,12 +77,12 @@ function saveRecipesToStorage(recipes) {
 function initFormHandler() {
 
   // B2. TODO - Get a reference to the <form> element
-  const form = document.querySelector('form');
+  let form = document.querySelector('form');
   
   // B3. TODO - Add an event listener for the 'submit' event, which fires when the
   //            submit button is clicked
   const submit = document.querySelector('button');
-  submit.addEventListener("click", function() {
+  submit.addEventListener('click', function() {
   // Steps B4-B9 will occur inside the event listener from step B3
     // B4. TODO - Create a new FormData object from the <form> element reference above
     const formData = new FormData(form);
@@ -87,24 +90,24 @@ function initFormHandler() {
     // B5. TODO - Create an empty object (I'll refer to this object as recipeObject to
     //            make this easier to read), and then extract the keys and corresponding
     //            values from the FormData object and insert them into recipeObject
-    var recipeObject = {};
+    let recipeObject = {};
     for (const entry of formData.entries()) {
       recipeObject[entry[0]] = entry[1];
     }
 
     // B6. TODO - Create a new <recipe-card> element
-    const card = document.createElement('recipe-card');
+    let card = document.createElement('recipe-card');
 
     // B7. TODO - Add the recipeObject data to <recipe-card> using element.data
     card.data = recipeObject;
 
     // B8. TODO - Append this new <recipe-card> to <main>
-    const main = document.querySelector('main');
+    let main = document.querySelector('main');
     main.append(card);
 
     // B9. TODO - Get the recipes array from localStorage, add this new recipe to it, and
     //            then save the recipes array back to localStorage
-    const oldRecipes = getRecipesFromStorage();
+    let oldRecipes = getRecipesFromStorage();
     oldRecipes.push(recipeObject);
     saveRecipesToStorage(oldRecipes);
   });
