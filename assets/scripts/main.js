@@ -51,7 +51,7 @@ function addRecipesToDocument(recipes) {
   //            each <recipe-card> with that recipe data using element.data = ...
   //            Append each element to <main>
   for (const recipe of recipes) {
-    const card = document.createElement('recipe-card');
+    let card = document.createElement('recipe-card');
     card.data = recipe;
     main.append(card);
   }
@@ -81,11 +81,11 @@ function initFormHandler() {
   
   // B3. TODO - Add an event listener for the 'submit' event, which fires when the
   //            submit button is clicked
-  const submit = document.querySelector('button');
+  let submit = document.querySelector('button');
   submit.addEventListener('click', function() {
   // Steps B4-B9 will occur inside the event listener from step B3
     // B4. TODO - Create a new FormData object from the <form> element reference above
-    const formData = new FormData(form);
+    let formData = new FormData(form);
 
     // B5. TODO - Create an empty object (I'll refer to this object as recipeObject to
     //            make this easier to read), and then extract the keys and corresponding
@@ -113,7 +113,7 @@ function initFormHandler() {
   });
 
   // B10. TODO - Get a reference to the "Clear Local Storage" button
-  const clear = document.getElementsByClassName('danger');
+  let clear = document.getElementsByClassName('danger');
 
   // B11. TODO - Add a click event listener to clear local storage button
   clear[0].addEventListener('click', function() {
